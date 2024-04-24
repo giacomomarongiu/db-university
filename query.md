@@ -14,7 +14,10 @@
 (Soluzione valida ma potrebbe capitare che la mia colonna non sia in formato DATE)
 - SELECT * FROM `students` WHERE CONVERT(date_of_birth, DATE) <= '1994-04-24';
 (Qui converto il mio dato in formato DATE e poi lo confornto)
-- 
+- SELECT * FROM `students` WHERE date_of_birth <= DATE_SUB(NOW(), INTERVAL 30 YEAR);
+(Soluzione interessante che mi permette di ottenere un risultato costante nel tempo:
+- La funzione NOW mi restituisce la data corrente
+- La funzione DATE_SUB mi permette di definire un intervallo di tempo fisso (30 anni in questo caso)) 
 
 # Selezionare tutti i corsi del primo semestre del primo anno di un qualsiasi corso di laurea (286)
 - SELECT * FROM `courses`WHERE period = 'I semestre' and year = 1;
