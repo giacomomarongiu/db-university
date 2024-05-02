@@ -1,7 +1,3 @@
-# Selezionare tutti gli studenti nati nel 1990 (160)
-`` - SELECT * FROM `students` WHERE date_of_birth LIKE '1990-%';``  
-- (LIKE è più comunemente usato con le stringhe)  
-
 
 # Group by - Contare quanti iscritti ci sono stati ogni anno
 ``SELECT YEAR(`enrolment_date`) AS enrolment_year, COUNT(*) AS subs_quantity FROM `students` WHERE `enrolment_date` IS NOT NULL GROUP BY enrolment_year;``
