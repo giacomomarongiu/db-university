@@ -51,5 +51,12 @@
 - Utilizzo Order BY per mettere in ordine alfabetico di cohnome e poi di nome
 
 # Joins - Selezionare tutti i corsi di laurea con i relativi corsi e insegnanti
+``SELECT `degrees`.`name`, `degrees`.`level`, `degrees`.`email`, `courses`.`name`, `courses`.`description`, `teachers`.`name`, `teachers`.`surname` FROM `degrees` JOIN `courses` ON `degrees`.`id` = `courses`.`degree_id` JOIN `course_teacher` ON `courses`.`id` = `course_teacher`.`course_id` JOIN `teachers` ON `course_teacher`.`teacher_id` = `teachers`.`id`;``
+
+- Logica simile alla precedente ma con più JOIN
+- Con la prima collego Corsidi Laurea e Corsi
+- COn la seconda ricavo un rapporto per stabilire i teacher
+- Con la terza ricavo il noome del teacher
+
 # Joins - Selezionare tutti i docenti che insegnano nel Dipartimento di Matematica (54)
 # Joins - BONUS: Selezionare per ogni studente il numero di tentativi sostenuti per ogni esame, stampando anche il voto massimo. Successivamente, filtrare i tentativi con voto minimo 18.
