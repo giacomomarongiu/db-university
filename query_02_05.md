@@ -1,11 +1,16 @@
 
 # Group by - Contare quanti iscritti ci sono stati ogni anno
 ``SELECT YEAR(`enrolment_date`) AS enrolment_year, COUNT(*) AS subs_quantity FROM `students` WHERE `enrolment_date` IS NOT NULL GROUP BY enrolment_year;``
-- Ragruppo gli ANNI della data di iscrizione in una colonna enrolment_year
+- Seleziono gli ANNI della data di iscrizione degli students in una colonna enrolment_year
 - Conto tutti gli studenti che non hanno una data di iscrizione nulla in un'altra colonna subs_quantity
 - Gli ragruppo per enrolemnt_year
 
 # Group by - Contare gli insegnanti che hanno l'ufficio nello stesso edificio
+``SELECT `office_address`, COUNT(*) AS same_address_quantity FROM `teachers` WHERE `office_address` IS NOT NULL GROUP BY office_address;``
+- Seleziono gli office_adress dei teachers in una colonna
+- Conto tutti gli indirizzi che non sono null in un'altra colonna same_address_quantity
+- Gli ragruppo per office_adress
+
 # Group by - Calcolare la media dei voti di ogni appello d'esame
 # Group by - Contare quanti corsi di laurea ci sono per ogni dipartimento
 
