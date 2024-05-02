@@ -12,7 +12,16 @@
 - Gli ragruppo per office_adress
 
 # Group by - Calcolare la media dei voti di ogni appello d'esame
+``SELECT `exam_id`, AVG(`vote`) AS average_vote FROM `exam_student` GROUP BY `exam_id`;``
+- Seleziono l'id degli esami (Non ho a disposizione il nome) e faccio la media dei voti di questo esame in una colonna average_vote
+- Faccio la media dei voti di questo esame in una colonna average_vote
+- Ragruppo per exam_id
+
 # Group by - Contare quanti corsi di laurea ci sono per ogni dipartimento
+``SELECT `department_id`, COUNT(*) AS degrees_per_department FROM `degrees` GROUP BY `department_id`;``
+- Seleziono l'id dei departments in degrees
+- Conto quanti corsi di laurea ci sono per ogni dipartimento i una colonna degrees_per_department
+- Ragruppo per department_id
 
 # Joins - Selezionare tutti gli studenti iscritti al Corso di Laurea in Economia
 # Joins - Selezionare tutti i Corsi di Laurea Magistrale del Dipartimento di Neuroscienze
