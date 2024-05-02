@@ -11,6 +11,9 @@
 - Conto tutti gli indirizzi che non sono null in un'altra colonna same_address_quantity
 - Gli ragruppo per office_adress
 
+``SELECT COUNT(`office_address`) AS same_address_quantity FROM `teachers` WHERE `office_address` IS NOT NULL GROUP BY office_address;``
+-  da slides, può essere utile in alcuni casi (Non selezionando dei gli office adress ho solo i numeri delle quantità)
+
 # Group by - Calcolare la media dei voti di ogni appello d'esame
 ``SELECT `exam_id`, AVG(`vote`) AS average_vote FROM `exam_student` GROUP BY `exam_id`;``
 - Seleziono l'id degli esami (Non ho a disposizione il nome) e faccio la media dei voti di questo esame in una colonna average_vote
@@ -23,7 +26,13 @@
 - Conto quanti corsi di laurea ci sono per ogni dipartimento i una colonna degrees_per_department
 - Ragruppo per department_id
 
+
 # Joins - Selezionare tutti gli studenti iscritti al Corso di Laurea in Economia
+``SELECT * FROM `students` JOIN `degrees` ON `students`.`degree_id` = `degrees`.`id` AND `degrees`.`name`= "Corso di Laurea in Economia"; ``
+- Per comodità seleziono tutto con *, ma potrei chiedere info specifiche con `students`.`name`
+- Faccio un JOIN tra students e degrees coinvolgendo le colonne che stabiliscono il collegamento tra loro
+- Aggiungo una condizone al Join (Posso farlo anche col Where? Dopo provo)
+
 # Joins - Selezionare tutti i Corsi di Laurea Magistrale del Dipartimento di Neuroscienze
 # Joins - Selezionare tutti i corsi in cui insegna Fulvio Amato (id=44)
 # Joins - Selezionare tutti gli studenti con i dati relativi al corso di laurea a cui sono iscritti e il relativo dipartimento, in ordine alfabetico per cognome e nome
