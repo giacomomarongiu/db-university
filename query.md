@@ -49,3 +49,18 @@
  Torna utile IN in quanto voglio contare non una, ma due stringhe  
  con l'istruzione GROUP BY posso raggruppare le righe che hanno gli stessi valori in righe di riepilogo  
  Se cancello il GRUOP BY quello che ottengo è il conteggio dei degrees che hanno come valore ('magistrale', 'triennale'), in questo caso, tutti)      
+
+
+
+
+ # Live 02/05 - Selezionare tutti i corsi del Corso di Laurea in Informatica
+ ``SELECT `courses`.`name`,`courses`.`year` AS `degree_name` FROM `courses` JOIN `degrees` ON `degrees`.`id` = `courses`.`degree_id` WHERE `degrees`.`name` = 'Corso di Laurea in Informatica';``
+
+ # Live 02/05 -  Selezionare le informazioni sul corso con id = 144, con tutti i relativi appelli d’esame
+``SELECT courses. id, e tutte le proprietà che vuoi exams.id FROM courses JOIN exams ON courses.id = exams.course_id WHERE courses.id=144``
+
+# Live 02/05 - Selezionare a quale dipartimento appartiene il Corso di Laurea in Diritto dell'Economia (Dipartimento di Scienze politiche, giuridiche e studi internazionali)
+``SELECT * FROM `departments` JOIN `degrees` ON `degrees`.`department_id`= `departments`.`id` WHERE `degrees`.`name` = "Corso di Laurea in Diritto dell'Economia";``
+
+
+
