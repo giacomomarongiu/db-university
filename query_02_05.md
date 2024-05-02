@@ -66,7 +66,7 @@
 - Faccio riga per riga perché mi viene meglio ragionare
 
 -Seleziono tutti i docenti
-``SELECT `teachers`.`*` ``
+``SELECT DISTINCT `teachers`.`*` ``
 ``FROM `teachers` ``
 
 - Seleziono i docenti che hanno dei corsi in course_teacher
