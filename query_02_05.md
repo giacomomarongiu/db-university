@@ -51,7 +51,11 @@
 - Utilizzo Order BY per mettere in ordine alfabetico di cohnome e poi di nome
 
 # Joins - Selezionare tutti i corsi di laurea con i relativi corsi e insegnanti
-``SELECT `degrees`.`name`, `degrees`.`level`, `degrees`.`email`, `courses`.`name`, `courses`.`description`, `teachers`.`name`, `teachers`.`surname` FROM `degrees` JOIN `courses` ON `degrees`.`id` = `courses`.`degree_id` JOIN `course_teacher` ON `courses`.`id` = `course_teacher`.`course_id` JOIN `teachers` ON `course_teacher`.`teacher_id` = `teachers`.`id`;``
+``SELECT `degrees`.`name`, `degrees`.`level`, `degrees`.`email`, `courses`.`name`, `courses`.`description`, `teachers`.`name`, `teachers`.`surname` ``
+``FROM `degrees` ``
+``JOIN `courses` ON `degrees`.`id` = `courses`.`degree_id` ``
+``JOIN `course_teacher` ON `courses`.`id` = `course_teacher`.`course_id` ``
+``JOIN `teachers` ON `course_teacher`.`teacher_id` = `teachers`.`id`;``
 
 - Logica simile alla precedente ma con più JOIN
 - Con la prima collego Corsidi Laurea e Corsi
@@ -59,4 +63,28 @@
 - Con la terza ricavo il noome del teacher
 
 # Joins - Selezionare tutti i docenti che insegnano nel Dipartimento di Matematica (54)
+- Faccio riga per riga perché mi viene meglio ragionare
+
+-Seleziono tutti i docenti
+``SELECT `teachers`.`*` ``
+``FROM `teachers` ``
+
+- Seleziono i docenti che hanno dei corsi in course_teacher
+``JOIN `course_teacher` ON `teachers`.`id` = `course_teacher`.`teacher_id` ``
+
+- Aggiungo alla selezione i corsi presenti in course_teacher
+``JOIN `courses` ON `course_teacher`.`course_id` = `courses`.`id` ``
+
+- Per arrivare al dipartimento mi serve prima:
+- Selezionare i Corsi di Laurea a cui fanno riferimento i corsi
+``JOIN `degrees` ON `courses`.`degree_id` = `degrees`.`id` ``
+
+- Adesso ho un collegamento tra insegnati e Dipartimenti
+``JOIN `departments` ON `degrees`.`department_id` = `departments`.`id` ``
+
+- Pongo la mia condizione
+``WHERE departments.`name` = 'Dipartimento di Matematica'; ``
+
+
+
 # Joins - BONUS: Selezionare per ogni studente il numero di tentativi sostenuti per ogni esame, stampando anche il voto massimo. Successivamente, filtrare i tentativi con voto minimo 18.
