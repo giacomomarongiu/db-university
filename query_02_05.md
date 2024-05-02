@@ -34,8 +34,22 @@
 - Aggiungo una condizone al Join (Posso farlo anche col Where? Dopo provo)
 
 # Joins - Selezionare tutti i Corsi di Laurea Magistrale del Dipartimento di Neuroscienze
+``SELECT * FROM `degrees` JOIN `departments` ON `degrees`.`department_id`= `departments`.`id` AND `departments`.`name` = "Dipartimento di Neuroscienze" AND `degrees`.`level`= "magistrale";``
+- Logica molto simile alla precedente 
+
 # Joins - Selezionare tutti i corsi in cui insegna Fulvio Amato (id=44)
+``SELECT `courses`.`name` AS course_name FROM `teachers` JOIN `course_teacher` ON `teachers`.`id` = `course_teacher`.`teacher_id` JOIN `courses` ON `course_teacher`.`course_id` = `courses`.`id` WHERE `teachers`.`id` = 44;``
+- Soluzione leggermente più complessa in quanto bisogna fare due JOIN
+- Una per fare un legame tra course_teacher e id teacher
+- L'altra tra courses e course_teacher.course_id
+- Utilizzo WHERE per filtrare solo dove id=44 per il signor Fulvio
+
 # Joins - Selezionare tutti gli studenti con i dati relativi al corso di laurea a cui sono iscritti e il relativo dipartimento, in ordine alfabetico per cognome e nome
+``SELECT `students`.`id`, `students`.`surname`, `students`.`name`, `degrees`.`name`, `departments`.`name` FROM `students` JOIN `degrees` ON `students`.`degree_id` = `degrees`.`id` JOIN `departments` ON `departments`.`id` = `degrees`.`department_id` ORDER BY `students`.`surname` ASC, `students`.`name` ASC;``
+- Seleziono nom e cognome degli studenti, nome del corso di laurea, relativo dipartimento
+- Faccio due JOIN (Simile es precedente)
+- Utilizzo Order BY per mettere in ordine alfabetico di cohnome e poi di nome
+
 # Joins - Selezionare tutti i corsi di laurea con i relativi corsi e insegnanti
 # Joins - Selezionare tutti i docenti che insegnano nel Dipartimento di Matematica (54)
 # Joins - BONUS: Selezionare per ogni studente il numero di tentativi sostenuti per ogni esame, stampando anche il voto massimo. Successivamente, filtrare i tentativi con voto minimo 18.
